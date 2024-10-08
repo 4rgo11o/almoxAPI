@@ -1,0 +1,64 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# Database files
+*.sqlite
+*.sqlite3
+
+# Sequelize migrations and seeders
+migrations/
+seeders/
+
+# Dependency directories
+bower_components/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Compiled files and directories
+dist/
+build/
+
+# Cache files
+.nyc_output/
+coverage/
+.cache/
+.pnp
+.pnp.js
+.next/
+.sass-cache/
+
+# Temporary files
+tmp/
+temp/
+*.swp
+*.lock
+*.bak
+*.tmp
+
+# Logs from pg or db operations
+*.pid
+*.pid.lock
+
+# Hstore cache and other database-specific files
+.pg_hba.conf
+*.dump
