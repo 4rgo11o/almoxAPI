@@ -2,32 +2,25 @@
 
 ## Descrição
 
-Almoxarifado API é uma API RESTful desenvolvida com **Node.js** e **Express.js**, utilizando **Sequelize** como ORM para gerenciar interações com o banco de dados. A API permite a criação e recuperação de entradas de materiais no almoxarifado, associando-as a usuários, fornecedores e itens específicos. Além disso, a API está documentada utilizando **Swagger**, facilitando o entendimento e uso por desenvolvedores.
-
+Almoxarifado API é uma API RESTful desenvolvida com **Node.js** e **Express.js**, utilizando **Sequelize** como ORM para gerenciar interações com o banco de dados. A API permite a criação e recuperação de entradas de materiais no almoxarifado, associando-as a usuários, fornecedores e itens específicos. 
 ## Tecnologias Utilizadas
 
 - **Node.js**
 - **Express.js**
 - **Sequelize** (ORM)
 - **PostgreSQL**
-- **Swagger** (para documentação da API)
-- **JWT** (para autenticação)
 - **dotenv** (para gerenciamento de variáveis de ambiente)
 
 ## Pré-requisitos
 
 - **Node.js** (v14 ou superior)
-- **NPM** ou **Yarn**
+- **NPM**
 - **Banco de Dados Relacional** (ex: PostgreSQL)
 - **Git**
 
-## Instalação
-
-### 1. Clone o Repositório
+## Funcionalidades
 
 ```bash
-git clone https://github.com/4rgo11o/almoxAPI.git
-cd almoxAPI
 
 1. Recuperar Entradas de um Usuário
 Endpoint: GET /entradas/usuario/{id}
