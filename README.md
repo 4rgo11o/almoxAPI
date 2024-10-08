@@ -3,8 +3,7 @@ Tecnologias Utilizadas
 Node.js
 Express.js
 Sequelize (ORM)
-PostgreSQL (ou outro banco de dados relacional suportado pelo Sequelize)
-
+PostgreSQL 
 
 1. Recuperar Entradas de um Usuário
 Endpoint: GET /entradas/usuario/{id}
