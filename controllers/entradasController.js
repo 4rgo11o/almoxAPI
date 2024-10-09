@@ -1,4 +1,4 @@
-const { User, Almoxarifado, Entrada, Fornecedor, Item, EntradaItem, sequelize } = require('../models'); // Ajuste o caminho conforme a estrutura do seu projeto
+const { User, Almoxarifado, Entrada, Fornecedor, Item, EntradaItem, AlmoxarifadoItem, sequelize } = require('../models'); // Ajuste o caminho conforme a estrutura do seu projeto
 
 const getEntradasUser = async (req, res) => {
   const userId = parseInt(req.params.id, 10);
@@ -40,7 +40,7 @@ const getEntradasUser = async (req, res) => {
         },
       ],
       attributes: ['id', 'createdAt', 'updatedAt'],
-      order: [['createdAt', 'DESC']], // Opcional: Ordenar as entradas por data de criação decrescente
+      order: [['createdAt', 'DESC']],
     });
 
     // **4. Log para Depuração (Opcional)**
@@ -135,13 +135,28 @@ const postEntradaUser = async (req, res) => {
 
       await EntradaItem.bulkCreate(entradaItens, { transaction: t });
 
-      // **6.3. Atualizar o Estoque dos Itens**
+      // Atualizar o estoque de cada item no almoxarifado correspondente
       for (const item of itens) {
-        await Item.update(
-          { quantidade_estoque: sequelize.literal(`quantidade_estoque + ${item.quantidade}`) },
-          { where: { id: item.id }, transaction: t }
-        );
+        const almoxarifadoItem = await AlmoxarifadoItem.findOne({
+          where: { id_item: item.id, id_almoxarifado: usuario.almoxarifado_id },
+        });
+
+        if (almoxarifadoItem) {
+          // Se a relação já existir, atualiza a quantidade
+          await AlmoxarifadoItem.update(
+            { quantidade: sequelize.literal(`quantidade + ${item.quantidade}`) },
+            { where: { id_item: item.id, id_almoxarifado: usuario.almoxarifado_id }, transaction: t }
+          );
+        } else {
+          // Caso contrário, cria uma nova entrada na tabela de relacionamento
+          await AlmoxarifadoItem.create({
+            id_item: item.id,
+            id_almoxarifado: usuario.almoxarifado_id,
+            quantidade: item.quantidade,
+          }, { transaction: t });
+        }
       }
+
 
       return novaEntrada;
     });

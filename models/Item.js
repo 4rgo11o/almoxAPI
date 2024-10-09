@@ -13,7 +13,7 @@ Item.init({
     type: DataTypes.STRING,
     allowNull: false,
   },
-  // Outros campos conforme necessário
+
 }, {
   sequelize,
   modelName: 'Item',

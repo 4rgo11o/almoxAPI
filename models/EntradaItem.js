@@ -33,8 +33,5 @@ EntradaItem.init({
   timestamps: false,
 });
 
-// Associações
-Entrada.belongsToMany(Item, { through: EntradaItem, foreignKey: 'id_entrada', otherKey: 'id_item'});
-Item.belongsToMany(Entrada, { through: EntradaItem, foreignKey: 'id_item', otherKey: 'id_entrada' });
 
 module.exports = EntradaItem;

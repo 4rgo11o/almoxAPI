@@ -34,10 +34,6 @@ Entrada.init({
   timestamps: true,
 });
 
-// Associações
-Entrada.belongsTo(User, { foreignKey: 'id_user' });
-Entrada.belongsTo(Fornecedor, { foreignKey: 'id_fornecedor' });
-User.hasMany(Entrada, { foreignKey: 'id_user' });
-Fornecedor.hasMany(Entrada, { foreignKey: 'id_fornecedor' });
+
 
 module.exports = Entrada;
