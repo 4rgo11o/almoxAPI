@@ -13,6 +13,10 @@ User.init({
     type: DataTypes.STRING,
     allowNull: false,
   },
+  password: {
+      type: DataTypes.STRING,
+      allowNull: true,
+  },
   almoxarifado_id: {
     type: DataTypes.INTEGER,
     references: {

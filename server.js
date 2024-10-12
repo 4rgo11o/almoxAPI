@@ -1,9 +1,11 @@
 const express = require('express');
-const dotenv = require('dotenv');
+const dotenv = require('dotenv/config.js');
 const entradasRouter = require('./routes/entradasRouter');
+const authRouter = require('./routes/authRouter');
+const authMiddleware = require('./middleware/authMiddleware');
 const { connectDB } = require('./config/db');
 
-dotenv.config();
+
 connectDB();
 
 const app = express();
@@ -11,7 +13,9 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/api/entradas', entradasRouter);
+app.use('/api/entradas', authMiddleware, entradasRouter);
+app.use('/api/auth', authRouter);
+
 
 
 const PORT = process.env.PORT || 5000;

@@ -11,7 +11,7 @@ const { User, Almoxarifado, Entrada, Fornecedor, Item, EntradaItem } = require('
  * @access Público (ajuste conforme necessário)
  */
 router.get('/usuario/:id', getEntradasUser);
-router.post('/', postEntradaUser);
+router.post('/cadastro/', postEntradaUser);
 
 
 module.exports = router;
