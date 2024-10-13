@@ -65,7 +65,7 @@ Exemplo de Resposta
 
 2. Criar uma Nova Entrada
 
-Endpoint: Post /entradas
+Endpoint: Post /entradas/cadastro
 
 Body(dados passados pelo usuário)
 {
@@ -112,4 +112,31 @@ Exemplo de Resposta
     ]
   }
 }
+3. Listar itens de um almoxarifado específico
+
+Exemplo de Requisição:
+GET /almoxarifado/1/items
+
+Exemplo de Resposta:
+
+{
+    "almoxarifado": {
+        "id": 1,
+        "nome": "Almoxarifado Central"
+    },
+    "itens": [
+        {
+            "id_item": 201,
+            "nome_item": "Item A",
+            "quantidade": 320
+        },
+        {
+            "id_item": 202,
+            "nome_item": "Item B",
+            "quantidade": 540
+        }
+    ]
+}
+
+
 
